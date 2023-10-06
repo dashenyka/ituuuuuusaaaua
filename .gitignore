@@ -1,5 +1,40 @@
-# Object file
-*.o
+def color(k, l, m, n):
+    color1 = (k + l) % 2
+    color2 = (m + n) % 2
 
-# Ada Library Information
-*.ali
+    if color1 == color2:
+        return True
+    else:
+        return False
+
+
+def figura(figure, k, l, m, n):
+    if figure == "ферзь":
+        if k == m or l == n or abs(k - m) == abs(l - n):
+            return True
+    elif figure == "ладья":
+        if k == m or l == n:
+            return True
+    elif figure == "слон":
+        if abs(k - m) == abs(l - n):
+            return True
+    elif figure == "конь":
+        if abs(k - m) == 1 and abs(l - n) == 2 or abs(k - m) == 2 and abs(l - n) == 1:
+            return True
+
+    return False
+
+
+k = int(input("Вертикаль для поля (k, l): "))
+l = int(input("Горизонталь для поля (k, l): "))
+m = int(input("Вертикаль для поля (m, n): "))
+n = int(input("Горизонталь для поля (m, n): "))
+if k>=1 and k<=8 and l>=1 and l<=8 and m>=1 and m<=8 and n>=1 and n<=8:
+    if color(k, l, m, n):
+        print("Поля (k, l) и (m, n) являются полями одного цвета.")
+    else:
+        print("Поля (k, l) и (m, n) являются полями разного цвета.")
+
+    
+else:
+        print("Недопустимые значения, введите числа от 1 до 8")
